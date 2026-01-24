@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Maker : 이난주 | IMC 브랜드 마케터 포트폴리오</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+/* CSS 변수 */
+:root {
+    --primary: #000000;
+    --accent: #0066FF;
+    --bg: #ffffff;
+    --bg-subtle: #FAFAFA;
+    --bg-card: #ffffff;
+    --bg-dark: #000000;
+    --text: #000000;
+    --text-sub: #555555;
+    --text-muted: #888888;
+    --text-light: #ffffff;
+    --border: rgba(0, 0, 0, 0.1);
+    --border-strong: rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* 텍스트 하이라이트 */
+.hl-yellow { font-weight: 700; color: #000000; }
+.hl-green { font-weight: 700; color: #0066FF; }
+.skill-highlight { font-weight: 700; color: #0066FF; }
+
+/* 리셋 및 기본 스타일 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #000000;
+    background-color: #ffffff;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+
+/* 히어로 섹션 */
+.hero {
+    padding: 80px 40px;
+    background: #000000;
+    text-align: center;
+}
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+.hero-title .korean { display: block; margin-top: 8px; }
+.hero-tagline {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+}
+.hero-sub {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+.scroll-indicator, .hero-glow, .navbar { display: none; }
+
+/* 목차 섹션 */
+.toc { padding: 60px 0; background: #FAFAFA; }
+.toc-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 32px; }
+.toc-grid { display: flex; flex-direction: column; }
+.toc-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+}
+.toc-item:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
+.toc-number { font-size: 0.8rem; font-weight: 600; color: #888888; width: 30px; }
+.toc-name { font-size: 1rem; font-weight: 600; flex: 1; }
+.toc-category { font-size: 0.75rem; color: #888888; }
+
+/* 섹션 공통 */
+section { padding: 60px 0; }
+.section-label {
+    font-size: 0.7rem;
+    color: #888888;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* About 섹션 */
+.about { background: #ffffff; border-top: 1px solid rgba(0,0,0,0.1); }
+.about-content { margin-bottom: 40px; }
+.about-intro h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+.about-intro .highlight {
+    border-bottom: 2px solid #0066FF;
+    padding-bottom: 2px;
+}
+.about-description {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.8;
+}
+.about-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.stat-item { border-left: 2px solid #000000; padding-left: 16px; }
+.stat-number { display: block; font-size: 1.8rem; font-weight: 700; }
+.stat-label { font-size: 0.75rem; color: #888888; }
+
+/* 역량 */
+.capabilities { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px; }
+.capability-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.capability-number { font-size: 0.7rem; font-weight: 600; }
+.capability-content h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+.capability-content p { font-size: 0.85rem; color: #555555; line-height: 1.5; }
+
+/* Work 섹션 */
+.work { background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.1); }
+.projects-list { display: flex; flex-direction: column; gap: 60px; }
+.project-item { padding-bottom: 40px; border-bottom: 1px solid rgba(0,0,0,0.1); page-break-inside: avoid; }
+.project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.project-index { font-size: 0.8rem; font-weight: 700; }
+.project-meta { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+.project-category { font-size: 0.7rem; color: #888888; letter-spacing: 0.08em; text-transform: uppercase; }
+.project-period { font-size: 0.7rem; color: #888888; }
+.project-contribution {
+    font-size: 0.65rem;
+    color: rgba(25,25,25,0.75);
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+.project-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+.project-summary { font-size: 0.9rem; color: #555555; line-height: 1.6; margin-bottom: 24px; }
+
+/* 칩 */
+.project-strengths { margin: 12px 0 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+    display: inline-flex;
+    padding: 6px 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* 프로젝트 미디어 */
+.project-media { margin-bottom: 24px; }
+.media-grid-thumbs { display: flex; gap: 12px; flex-wrap: wrap; }
+.media-thumb {
+    width: 140px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+.media-thumb img { width: 100%; height: auto; display: block; }
+.media-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.media-item { border-radius: 8px; overflow: hidden; }
+.media-item img { width: 100%; height: auto; display: block; }
+
+/* 프로젝트 상세 그리드 */
+.project-details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.detail-card { padding: 20px; background: #ffffff; border: 1px solid rgba(0,0,0,0.1); }
+.detail-card.role { grid-column: 1 / -1; }
+.detail-label { display: block; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
+.detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.detail-card li { font-size: 0.8rem; color: #555555; padding-left: 12px; position: relative; line-height: 1.5; }
+.detail-card li::before { content: '•'; position: absolute; left: 0; color: #888888; }
+.detail-card p { font-size: 0.8rem; color: #555555; line-height: 1.5; margin: 0; }
+.insight-quote {
+    margin: 0 0 12px 0;
+    padding: 14px 18px;
+    background: #FAFAFA;
+    border-left: 3px solid #000000;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.context-bullets { margin-top: 8px; color: #555555; }
+
+/* Result 메트릭 */
+.result-metrics { display: flex; gap: 12px; flex-wrap: wrap; }
+.metric {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 16px 12px;
+    background: #FAFAFA;
+}
+.metric-value { display: block; font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+.metric-label { font-size: 0.65rem; color: #888888; }
+.result-qual { margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.12); }
+.result-qual ul { list-style: none; display: grid; gap: 6px; }
+.result-qual li { color: #555555; padding-left: 12px; position: relative; font-size: 0.8rem; }
+.result-qual li::before { content: '•'; position: absolute; left: 0; color: #888888; }
+
+/* 프로젝트 메인 이미지 */
+.project-main-image { margin: 16px 0 24px; border: 1px solid rgba(0,0,0,0.1); }
+.project-main-image img { width: 100%; height: auto; display: block; }
+
+/* Skills 섹션 */
+.skills { background: #ffffff; border-top: 1px solid rgba(0,0,0,0.1); }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.skill-block h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.skill-block li { font-size: 0.8rem; color: #555555; padding-left: 12px; position: relative; }
+.skill-block li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: #000000;
+}
+
+/* Contact 섹션 */
+.contact { background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.1); }
+.contact-wrapper { display: flex; justify-content: flex-start; align-items: center; gap: 60px; }
+.contact-content { flex: 1; max-width: 500px; }
+.contact-glow { display: none; }
+.contact-title { font-size: 2rem; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+.contact-description { font-size: 0.95rem; color: #555555; margin-bottom: 32px; line-height: 1.7; }
+.contact-links { display: flex; flex-direction: column; gap: 16px; }
+.contact-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-decoration: none;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.link-label { font-size: 0.7rem; color: #888888; letter-spacing: 0.08em; text-transform: uppercase; }
+.link-value { font-size: 0.95rem; color: #000000; font-weight: 500; }
+.contact-profile { flex-shrink: 0; }
+.profile-image-wrapper { width: 200px; }
+.profile-image-wrapper img { width: 100%; height: auto; display: block; }
+
+/* 푸터 */
+.footer { padding: 30px 0; border-top: 1px solid rgba(0,0,0,0.1); text-align: center; background: #ffffff; }
+.footer p { font-size: 0.8rem; color: #888888; }
+.footer .offline-notice { font-size: 0.7rem; margin-top: 8px; opacity: 0.7; }
+
+/* 인쇄/PDF용 스타일 */
+@media print {
+    body { font-size: 11px; }
+    .hero { padding: 40px 20px; }
+    .hero-title { font-size: 1.8rem; }
+    section { padding: 30px 0; }
+    .container { padding: 0 20px; }
+    .project-item { page-break-inside: avoid; }
+    .detail-card { page-break-inside: avoid; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+    </style>
+</head>
+<body>
+    <!-- 히어로 섹션 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Brand Maker : <span class="korean">이난주</span></h1>
+            <p class="hero-tagline">CONTENTS · DATA-BASED STRATEGY · AI</p>
+            <p class="hero-sub">F&F · 브랜드 마케팅 · 4년+</p>
+        </div>
+    </section>
+
+    <!-- 목차 섹션 -->
+    <section id="toc" class="toc">
+        <div class="container">
+            <div class="section-label">CONTENTS</div>
+            <h2 class="toc-title">주요 프로젝트</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <span class="toc-number">01</span>
+                    <span class="toc-name">듀베티카 24FW 셀럽/인플루언서 협업</span>
+                    <span class="toc-category">셀럽 · IMC · PM</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">02</span>
+                    <span class="toc-name">세르지오 타키니 한남 플래그십 & 콜라보</span>
+                    <span class="toc-category">Flagship · Collaboration</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">03</span>
+                    <span class="toc-name">현대카드 슈퍼매치</span>
+                    <span class="toc-category">Sponsorship · Collaboration</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">04</span>
+                    <span class="toc-name">세르지오 타키니 EQL 성수 팝업</span>
+                    <span class="toc-category">Retail Pop-up</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">05</span>
+                    <span class="toc-name">몬테카를로 마스터즈 MCCC 글로벌 행사</span>
+                    <span class="toc-category">Global Event</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">06</span>
+                    <span class="toc-name">시즌 IMC 전략 수립</span>
+                    <span class="toc-category">Strategy</span>
+                </div>
+                <div class="toc-item">
+                    <span class="toc-number">07</span>
+                    <span class="toc-name">AI Agent MKT KPI 대시보드 구축</span>
+                    <span class="toc-category">AI · Automation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About 섹션 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-label">ABOUT</div>
+            <div class="about-content">
+                <div class="about-intro">
+                    <h2><span class="highlight">뉴미디어 채널과 콘텐츠</span>로<br>브랜드를 성장시키는 IMC 마케터</h2>
+                    <p class="about-description">
+                        패션 브랜드에서 4년간 <span class="hl-yellow">브랜딩과 매출, 두 마리 토끼</span>를 잡아왔어요.
+                        숫자로 설득하고, 감각으로 마무리하는 스타일이에요.
+                        혼자 빛나는 것보다 <span class="hl-green">팀이 같이 달릴 때 더 멀리 간다</span>고 생각해요.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Years at F&F</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500만</span>
+                        <span class="stat-label">Max Contents View</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">손익분기점 달성</span>
+                        <span class="stat-label">신규 브랜드</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 핵심 역량 -->
+            <div class="capabilities">
+                <div class="capability-item">
+                    <div class="capability-number">01</div>
+                    <div class="capability-content">
+                        <h4>IMC 전략 & 브랜드 성장</h4>
+                        <p>SNS, PR, 셀럽, 팝업, 광고를 <span class="hl-yellow">하나의 메시지</span>로 엮어요. 6개월 만에 <span class="hl-green">인지도·매출 2배</span>.</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-number">02</div>
+                    <div class="capability-content">
+                        <h4>경쟁사 데이터 기반 전략</h4>
+                        <p>브랜딩 계획 전 <span class="hl-yellow">경쟁사 데이터를 꼼꼼히</span> 분석해요. 시장 포지셔닝과 차별화 포인트를 <span class="hl-green">숫자로 검증</span>하고 실행해요.</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-number">03</div>
+                    <div class="capability-content">
+                        <h4>온·오프라인 리테일</h4>
+                        <p>더현대, EQL, 롯데월드몰 팝업 처음부터 끝까지 했어요. 검색 유입 <span class="hl-green">150~400% 증가</span>.</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-number">04</div>
+                    <div class="capability-content">
+                        <h4>AI 기반 업무 자동화</h4>
+                        <p>SQL로 KPI 대시보드 직접 만들었어요. 회의 자료 만드는 시간 <span class="hl-green">3배 단축</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work 섹션 -->
+    <section id="work" class="work">
+        <div class="container">
+            <div class="section-label">WORK</div>
+            <h2 class="section-title">Selected Projects</h2>
+            
+            <div class="projects-list">
+                <!-- 프로젝트 1: 듀베티카 -->
+                <article class="project-item" id="duvetica">
+                    <div class="project-header">
+                        <div class="project-index">01</div>
+                        <div class="project-meta">
+                            <span class="project-category">셀럽/인플루언서 · IMC · PM</span>
+                            <span class="project-period">2024.09 - 2025.02</span>
+                            <span class="project-contribution">기여도: 기획 80% · 실행 100% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">듀베티카 24FW 셀럽/인플루언서 협업 프로젝트</h3>
+                    <p class="project-summary">
+                        <strong>[PM]</strong> 리브랜딩 이후 듀베티카가 가진 <strong>패딩 헤리티지/프리미엄 무드</strong>를 대중에게 확산시키고,
+                        <strong>'NEXT 몽클레르'</strong> 포지셔닝을 만들기 위해
+                        셀럽(김지원) → 인플루언서 → 커뮤니티 → 실수요층으로 이어지는 <strong>IMC 메시지 통합</strong>을 설계·실행한 프로젝트입니다.
+                    </p>
+
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">IMC 메시지 통합</span>
+                            <span class="chip">타깃/포지셔닝 재정의</span>
+                            <span class="chip">셀럽→인플루언서 연결</span>
+                            <span class="chip">OOH→바이럴 설계</span>
+                            <span class="chip">커뮤니티 시딩</span>
+                            <span class="chip">데이터 기반 검증</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role (기여도 기반)</span>
+                            <ul>
+                                <li><strong>기획 (80%)</strong>: 타깃(당당한 3040 도시여성) 재정의, 'NEXT 몽클레르' 포지셔닝 논리 정리, 메시지 통합 구조 설계</li>
+                                <li><strong>실행 (100%)</strong>: 셀럽(김지원) 활용 앵글/PR 구체화, 오프라인 이벤트·릴레이 팝업·옥외광고·프로모션·바이럴까지 연결</li>
+                                <li><strong>분석 (100%)</strong>: 노출→인스타→커뮤니티→실수요 침투 퍼널로 성과 추적(검색/조회/매출), 개선 포인트 도출</li>
+                                <li><strong>조직 설득/얼라인</strong>: 키 아이템 메이킹을 위해 '단기 매출'보다 '브랜딩' 우선의 운영전략을 내부 부서에 설득</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-card context">
+                            <span class="detail-label">🧭 Why (맥락/왜 풀어야 했나)</span>
+                            <p>
+                                듀베티카는 '패딩'에 대한 정통성과 헤리티지, 일부 프리미엄 이미지를 보유했지만 이를 더 많은 대중에게 전파해
+                                <strong>인지도·신규 유입</strong>을 만들 필요가 있었습니다.
+                            </p>
+                            <p class="context-bullets">
+                                <strong>진짜 중요했던 것</strong>: 타깃 재정의(당당한 3040 도시여성) · 포지셔닝(유사 무드/합리적 가격) · 첫 인상(김지원 착장) · 확산(패션 매체/커뮤니티/OOH)
+                            </p>
+                        </div>
+                        <div class="detail-card problem">
+                            <span class="detail-label">🔍 Problem (문제 정의)</span>
+                            <ul>
+                                <li>브랜드 인지도 개선</li>
+                                <li>아웃도어로 치우친 콘텐츠/텍스트 톤앤매너 재정립</li>
+                                <li>마케팅 타깃 연령을 '30대 여성' 중심으로 낮추기</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-card key-insight">
+                            <span class="detail-label">💡 Key Insight (해결의 단서)</span>
+                            <p class="insight-quote"><strong>"노출은 최대화, 브랜드 가치 납득은 5명만 타겟한다."</strong></p>
+                            <ul>
+                                <li>프리미엄 브랜드일수록 '작지만 실수요 커뮤니티'가 납득하면 입소문으로 자연 확산된다</li>
+                                <li>셀럽은 '첫 인상'과 신뢰를 만들고, 인플루언서는 '생활 맥락'과 구매 이유를 확장한다</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-card strategy">
+                            <span class="detail-label">🧩 Strategy (전략)</span>
+                            <ul>
+                                <li><strong>셀럽 앵커</strong>: '눈물의 여왕' 이슈로 화제였던 김지원의 '고급스럽고 당당한 여성' 이미지로 포지셔닝을 직관화</li>
+                                <li><strong>연결고리 설계</strong>: 셀럽 오프라인 행사 → 겨울 매출 기간 릴레이 팝업 → 인플루언서 확산으로 오피니언 리더 체인 생성</li>
+                                <li><strong>키 아이템 메이킹</strong>: 3040 커리어우먼 라이프스타일에 맞는 '가볍고, 어디에나 예쁘고, 실루엣 보정' 가능한 판쵸 스타일 중심으로 선택/설득</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-card execution">
+                            <span class="detail-label">🛠 Execution (실행)</span>
+                            <ul>
+                                <li>11~12월 성수·더현대 등 옥외광고 집행 + QR/매체 바이럴로 중첩 노출 및 진성 관심 고객 회수</li>
+                                <li>김지원 이미지를 활용할 수 있는 바이럴 앵글/PR 활동 구체화 및 확대</li>
+                                <li>옥외광고 → 인스타그램 → 커뮤니티 → 실수요 커뮤니티 침투로 이어지는 노출 전략 수립</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result (증거/성과)</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">500만</span>
+                                    <span class="metric-label">셀럽 콘텐츠 조회수</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">4배</span>
+                                    <span class="metric-label">키 아이템 매출 증가</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">2배</span>
+                                    <span class="metric-label">연간 검색량 & 매출</span>
+                                </div>
+                            </div>
+                            <div class="result-qual">
+                                <ul>
+                                    <li><strong>여배우 패딩 이미지</strong> 확립 → "몽클레르 대체템"으로 언급</li>
+                                    <li><strong>IMC 전략 효용성</strong> 입증 → 전사 부서별 합의체 조직으로 연결</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Learnings (배움/다음)</span>
+                            <p><strong>배운 점</strong> — "디테일이 브랜드를 만든다." 비주얼 한 장, 포토부스 분위기, 셀럽 착장, 매장 조명, 릴스 컷 구성까지 모든 터치포인트를 하나의 문장처럼 연결할 때 전달력이 커진다는 것을 체감했습니다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 2: 한남 플래그십 -->
+                <article class="project-item" id="sergio-hannam">
+                    <div class="project-header">
+                        <div class="project-index">02</div>
+                        <div class="project-meta">
+                            <span class="project-category">Flagship · Collaboration · PM</span>
+                            <span class="project-period">2025.08 - 2025.10</span>
+                            <span class="project-contribution">기여도: 기획 100% · 실행 85% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">세르지오 타키니 한남 플래그십 & 콜라보</h3>
+                    <p class="project-summary"><strong>[PM 총괄]</strong> 한남 플래그십 오픈을 <span class="hl-yellow">로컬 핫플</span>로 만들었어요.
+                        올리베 키링, 현대카드 콜라보까지 직접 기획하고 현장 운영까지. 결과는 <span class="hl-green">유입·매출 전환 2배</span>, 오가닉 콘텐츠 <span class="hl-green">400건</span>.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">플래그십 오픈 기획</span>
+                            <span class="chip">IP 콜라보 (올리베/현대카드)</span>
+                            <span class="chip">현장 운영 설계</span>
+                            <span class="chip">인플루언서 마케팅</span>
+                            <span class="chip">오가닉 바이럴 유도</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>기획 리드 (100%)</strong>: 플래그십 오픈 행사 기획, 올리베/현대카드 콜라보 기획, 메시지/비주얼 방향성 수립</li>
+                                <li><strong>실행 (85%)</strong>: 현장 운영 프로세스 설계, 셀럽/인플루언서 활용 마케팅, GWP/이벤트 기획</li>
+                                <li><strong>분석 (100%)</strong>: 동선/체험 포인트/촬영 스팟 설계, 운영 인력 관리, 성과 분석</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card context">
+                            <span class="detail-label">🧭 Why (맥락/왜 풀어야 했나)</span>
+                            <p>
+                                60년 헤리티지를 가진 스포츠 브랜드 이미지를 넘어, 클래식 웰니스 라이프스타일 브랜드로의 확장이 필요했습니다.
+                                포지셔닝은 'Polo with Tennis'로 설정, 마케팅 타깃을 20대 여성으로 전환해야 했습니다.
+                            </p>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">2배</span>
+                                    <span class="metric-label">한남 플래그십 유입·매출 전환</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">300만+</span>
+                                    <span class="metric-label">단일 콘텐츠 조회수</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">약 400건</span>
+                                    <span class="metric-label">오가닉 콘텐츠 생성</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Insight</span>
+                            <p>
+                                <strong>핵심 인사이트</strong> — 브랜드 강/약점을 정확히 진단하고 타깃 커뮤니티가 납득할 리즈너블한 가치를 제시해야 매출로 연결됩니다.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 3: 현대카드 슈퍼매치 -->
+                <article class="project-item" id="supermatch">
+                    <div class="project-header">
+                        <div class="project-index">03</div>
+                        <div class="project-meta">
+                            <span class="project-category">Sponsorship · Collaboration · PM</span>
+                            <span class="project-period">2024.11 - 2024.12</span>
+                            <span class="project-contribution">기여도: 기획 90% · 실행 80% · 분석 80%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">현대카드 슈퍼매치</h3>
+                    <p class="project-summary"><strong>[PM · Sponsorship Activation]</strong> 테니스 세계 랭킹 1·2위 초청 슈퍼매치 공식 후원을 통해 브랜드 테니스 헤리티지를 다시 각인시키고, 희소성 있는 협업 MD와 오피니언 리더를 결합한 앵글로 대중·팬덤을 동시에 설득해 <span class="hl-green">2주 내 검색·매출 2배 상승</span>을 만든 프로젝트입니다.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">스폰서십 활성화</span>
+                            <span class="chip">테니스 헤리티지 브랜딩</span>
+                            <span class="chip">협업 MD 기획</span>
+                            <span class="chip">오피니언 리더 활용</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>기획 리드 (90%)</strong>: 후원 목표/메시지 정의, 팬덤+대중 공통 앵글 설계, 협업 MD·콘텐츠 연계 전략 수립</li>
+                                <li><strong>실행 (80%)</strong>: 오피니언 리더 섭외·콘텐츠 기획, 뉴미디어 채널 운영, 현장 콘텐츠 확보</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result (성과)</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">2배</span>
+                                    <span class="metric-label">2주간 검색량·매출 상승</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">40만+</span>
+                                    <span class="metric-label">단일 콘텐츠 조회수</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">1위</span>
+                                    <span class="metric-label">MD 리오더 주간 판매</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 4: 세르지오 타키니 EQL -->
+                <article class="project-item" id="sergio-eql">
+                    <div class="project-header">
+                        <div class="project-index">04</div>
+                        <div class="project-meta">
+                            <span class="project-category">Retail Pop-up · PM</span>
+                            <span class="project-period">2025.02 - 2025.04</span>
+                            <span class="project-contribution">기여도: 기획 100% · 실행 90% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">세르지오 타키니 EQL 성수 팝업</h3>
+                    <p class="project-summary"><strong>[PM 리드]</strong> 성수에서 <span class="hl-yellow">'찍고 싶은 공간'</span>을 만들었어요.
+                        제품은 2~3개로 줄이고, 무드에 집중. 결과는 <span class="hl-green">바이럴 300만+</span>, 키 아이템 검색량 <span class="hl-green">2배</span>.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">팝업 공간 기획</span>
+                            <span class="chip">무드 중심 VMD</span>
+                            <span class="chip">포토존 설계</span>
+                            <span class="chip">바이럴 콘텐츠 유도</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>기획 리드 (100%)</strong>: 팝업 비주얼 기획, 브랜드 재해석 전략 수립, 타겟 확장 전략</li>
+                                <li><strong>공간 설계</strong>: '고객의 촬영 행동' 중심 공간 구성, 제품 최소화 전략</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">300만+</span>
+                                    <span class="metric-label">SNS 바이럴 조회수</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">2배</span>
+                                    <span class="metric-label">키 아이템 검색량</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Insight</span>
+                            <p><strong>"공간의 역할 재정의"</strong> — 성수처럼 트렌드가 빠른 지역에서는 오프라인 목적이 판매보다 '온라인 확산이 가능한 브랜드 경험'이 되어야 한다.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 5: MCCC 글로벌 -->
+                <article class="project-item" id="mccc">
+                    <div class="project-header">
+                        <div class="project-index">05</div>
+                        <div class="project-meta">
+                            <span class="project-category">Global Event · PM</span>
+                            <span class="project-period">2025.02 - 2025.05</span>
+                            <span class="project-contribution">기여도: 기획 100% · 실행 70% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">몬테카를로 마스터즈 MCCC 글로벌 행사</h3>
+                    <p class="project-summary"><strong>[PM 리드]</strong> 몬테카를로 마스터즈에서 <span class="hl-yellow">오래 쓸 수 있는 콘텐츠</span>를 확보했어요.
+                        셀럽 동선, 착장, 촬영 포인트까지 직접 설계. 결과는 주요 콘텐츠 <span class="hl-green">100~300만 조회</span>.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">글로벌 이벤트 기획</span>
+                            <span class="chip">셀럽 동선/착장 설계</span>
+                            <span class="chip">촬영 포인트 기획</span>
+                            <span class="chip">장기 활용 콘텐츠 확보</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>기획 리드 (100%)</strong>: 사전 셀럽 초청 행사 타임라인 기획, 셀럽 동선·착장·촬영 포인트 설계</li>
+                                <li><strong>리스크 관리</strong>: 제약조건 속 우선순위 설정, 필수 컷리스트 정의 및 체크리스트 운영</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">3.5만</span>
+                                    <span class="metric-label">메인 콘텐츠 ENG</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">100~300만</span>
+                                    <span class="metric-label">주요 콘텐츠 조회수</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Insight</span>
+                            <p><strong>"멀티 유즈 관점의 기획"</strong> — 글로벌 프로젝트는 현장의 화려함보다 '얼마나 오래, 얼마나 여러 채널에서 쓸 수 있는지'가 더 중요.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 6: 시즌 IMC -->
+                <article class="project-item" id="imc">
+                    <div class="project-header">
+                        <div class="project-index">06</div>
+                        <div class="project-meta">
+                            <span class="project-category">Strategy · PM</span>
+                            <span class="project-period">2021.10 - Present</span>
+                            <span class="project-contribution">기여도: 기획 100% · 실행 60% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">시즌 IMC 전략 수립</h3>
+                    <p class="project-summary"><strong>[전략 리드]</strong> 매 시즌 <span class="hl-yellow">브랜딩+세일즈 통합 전략</span>을 짜요.
+                        KPI 설정, 예산 배분, 부서 조율까지. 결과는 시즌별 <span class="hl-green">인지도·매출 2배+</span> 성장.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">시즌 IMC 전략</span>
+                            <span class="chip">경쟁사 분석</span>
+                            <span class="chip">KPI 설정/예산 배분</span>
+                            <span class="chip">부서 간 조율</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>전략 리드 (100%)</strong>: 시즌별 상품 전략, KPI, 예산, 플래닝 리드, 브랜드+세일즈 통합 전략 설계</li>
+                                <li><strong>데이터 분석 (100%)</strong>: 데이터 기반 전략 및 트렌드 리서치 자료 배포, 의사결정 기준 설정</li>
+                                <li><strong>템플릿 구축</strong>: 전략/리서치/KPI 운영 자료 템플릿 제작, 이후 시즌 반복 활용 가능한 레퍼런스 정착</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">2배+</span>
+                                    <span class="metric-label">시즌별 인지도·매출</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">템플릿화</span>
+                                    <span class="metric-label">전략/리서치/KPI 자료</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">단축</span>
+                                    <span class="metric-label">리드 타임 감소</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Insight</span>
+                            <p><strong>"구조의 힘"</strong> — '좋은 아이디어'보다 '지속 가능한 성장 구조'가 더 중요. 조직을 같은 방향으로 움직이게 하는 브릿지 역할의 중요성 체득.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 프로젝트 7: AI 대시보드 -->
+                <article class="project-item" id="ai-dashboard">
+                    <div class="project-header">
+                        <div class="project-index">07</div>
+                        <div class="project-meta">
+                            <span class="project-category">AI · Automation</span>
+                            <span class="project-period">2025.08 - Present</span>
+                            <span class="project-contribution">기여도: 기획 100% · 개발 100% · 분석 100%</span>
+                        </div>
+                    </div>
+                    <h3 class="project-name">AI Agent MKT KPI 대시보드 구축</h3>
+                    <p class="project-summary"><strong>[개발 리드]</strong> 마케팅 KPI 대시보드를 <span class="hl-yellow">직접 만들었어요</span>.
+                        SQL 쿼리 설계부터 자동화까지. 결과는 회의 자료 제작 <span class="hl-green">시간 3배 단축</span>.</p>
+                    
+                    <div class="project-strengths">
+                        <div class="chips">
+                            <span class="chip">AI 기반 대시보드</span>
+                            <span class="chip">Snowflake SQL 설계</span>
+                            <span class="chip">업무 자동화</span>
+                            <span class="chip">데이터 시각화</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details-grid">
+                        <div class="detail-card role">
+                            <span class="detail-label">👤 My Role</span>
+                            <ul>
+                                <li><strong>기획 리드 (100%)</strong>: 마케팅 KPI와 판매데이터 연결 구조 설계, 대시보드 요구사항 정의</li>
+                                <li><strong>개발 (100%)</strong>: Snowflake SQL 데이터 자동화 쿼리 설계, AI 기반 인사이트 도출 대시보드 제작</li>
+                                <li><strong>자동화 구축 (100%)</strong>: 주간 회의 자료, CEO 보고 자료 자동화, 경쟁사 대비 데이터 통합</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card result">
+                            <span class="detail-label">📈 Result</span>
+                            <div class="result-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">3배</span>
+                                    <span class="metric-label">자료 제작 시간 단축</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">향상</span>
+                                    <span class="metric-label">의사결정 속도</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">감소</span>
+                                    <span class="metric-label">부서 커뮤니케이션</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card insight">
+                            <span class="detail-label">💭 Insight</span>
+                            <p><strong>"AI는 팀의 운영 전략"</strong> — AI는 단순히 도구가 아니라 팀의 일하는 방식을 바꾸는 운영 전략. 데이터 인프라를 직접 구축할 수 있는 마케터가 조직 내 경쟁력.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills 섹션 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-label">SKILLS</div>
+            <h2 class="section-title">What I Do</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-block">
+                    <h4>Strategy</h4>
+                    <ul>
+                        <li><span class="skill-highlight">IMC 전략 기획</span></li>
+                        <li>브랜딩·세일즈 퍼널</li>
+                        <li><span class="skill-highlight">캠페인 스토리텔링</span></li>
+                        <li><span class="skill-highlight">시즌별 메시지 아키텍처</span></li>
+                        <li>KPI 설정 및 예산 배분</li>
+                    </ul>
+                </div>
+                <div class="skill-block">
+                    <h4>Data & Research</h4>
+                    <ul>
+                        <li><span class="skill-highlight">경쟁사 분석 및 리서치</span></li>
+                        <li>시장 트렌드 데이터 분석</li>
+                        <li>SNS 지표 분석</li>
+                        <li>CRM 세그먼트 분석</li>
+                        <li><span class="skill-highlight">데이터 기반 가설 설계</span></li>
+                    </ul>
+                </div>
+                <div class="skill-block">
+                    <h4>Creative</h4>
+                    <ul>
+                        <li><span class="skill-highlight">숏폼 기획</span></li>
+                        <li><span class="skill-highlight">IP & 브랜드 협업</span></li>
+                        <li>인플루언서 협업</li>
+                        <li>촬영 기획/디렉션</li>
+                        <li><span class="skill-highlight">바이럴 콘텐츠 설계</span></li>
+                    </ul>
+                </div>
+                <div class="skill-block">
+                    <h4>Tools & Tech</h4>
+                    <ul>
+                        <li>Notion · Figma · Excel</li>
+                        <li>Google Analytics</li>
+                        <li>Meta / TikTok Business</li>
+                        <li><span class="skill-highlight">SQL (Snowflake)</span></li>
+                        <li><span class="skill-highlight">AI 이미지/영상/분석</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact 섹션 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content">
+                    <div class="section-label">CONTACT</div>
+                    <h2 class="contact-title">Let's Work<br>Together</h2>
+                    <p class="contact-description">
+                        <strong>뉴미디어 채널과 콘텐츠로 브랜드를 성장시키는 IMC 마케터</strong>입니다.<br>
+                        브랜드 커뮤니케이션 전략 수립부터 통합 마케팅, 국내외 협업 캠페인까지<br>
+                        채널 × 콘텐츠 × 데이터를 연결해 브랜드를 빌드업합니다.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:skswn2@naver.com" class="contact-link">
+                            <span class="link-label">Email</span>
+                            <span class="link-value">skswn2@naver.com</span>
+                        </a>
+                        <a href="tel:010-6808-5398" class="contact-link">
+                            <span class="link-label">Phone</span>
+                            <span class="link-value">010-6808-5398</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-profile">
+                    <div class="profile-image-wrapper">
+                        <img src="https://skswn27-max.github.io/brandmkt_portpolio/images/이난주_프로필사진.JPG" alt="이난주 프로필">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <p>@ 브랜드 마케터 이난주</p>
+        </div>
+    </footer>
+</body>
+</html>
