@@ -1,53 +1,67 @@
 /* =============================================
-   Brand Maker 포트폴리오 - Kakao-ish Theme (Light)
-   - 콘텐츠 구조 유지 + 톤앤매너만 리스킨
+   Brand Maker 포트폴리오 - 한화손해보험 Theme
+   - 한화 오렌지 컬러 시스템 적용
    ============================================= */
 
-/* CSS 변수 - 현대카드 스타일 */
+/* CSS 변수 - 한화손해보험 스타일 */
 :root {
-    --primary: #000000;
-    --accent: #0066FF;
+    --primary: #1a1a1a;
+    
+    /* 한화 오렌지 컬러 시스템 */
+    --hanwha-orange: #F37321;
+    --hanwha-orange-70: #F89B6C;
+    --hanwha-orange-50: #FBB584;
+    --hanwha-orange-light: rgba(243, 115, 33, 0.1);
+    --hanwha-orange-medium: rgba(243, 115, 33, 0.15);
+    
+    --accent: #F37321;
+    --accent-hover: #E5651A;
+    --accent-light: rgba(243, 115, 33, 0.1);
     
     --bg: #ffffff;
     --bg-subtle: #FAFAFA;
     --bg-card: #ffffff;
-    --bg-dark: #000000;
+    --bg-dark: #1a1a1a;
+    --bg-warm: #FFF9F5;
 
-    --text: #000000;
+    --text: #1a1a1a;
     --text-sub: #555555;
     --text-muted: #888888;
     --text-light: #ffffff;
 
-    --border: rgba(0, 0, 0, 0.1);
-    --border-strong: rgba(0, 0, 0, 0.2);
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.15);
+    --border-accent: rgba(243, 115, 33, 0.3);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-accent: 0 4px 20px rgba(243, 115, 33, 0.15);
 
-    --problem-color: #000000;
-    --solution-color: #0066FF;
-    --result-color: #000000;
-    --insight-color: #000000;
+    --problem-color: #1a1a1a;
+    --solution-color: #F37321;
+    --result-color: #F37321;
+    --insight-color: #1a1a1a;
 
-    --radius-lg: 0px;
-    --radius-md: 0px;
-    --radius-sm: 0px;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --radius-sm: 4px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* 하이라이트 - 심플하게 */
-    --highlight-yellow: rgba(0, 102, 255, 0.1);
-    --highlight-green: rgba(0, 102, 255, 0.15);
-    --highlight-blue: rgba(0, 102, 255, 0.1);
+    /* 하이라이트 - 한화 오렌지 */
+    --highlight-yellow: rgba(243, 115, 33, 0.12);
+    --highlight-green: rgba(243, 115, 33, 0.18);
+    --highlight-blue: rgba(243, 115, 33, 0.1);
 }
 
-/* 텍스트 하이라이트 - 현대카드 스타일 */
+/* 텍스트 하이라이트 - 한화 스타일 */
 .hl-yellow {
     font-weight: 700;
     color: var(--text);
+    background: linear-gradient(180deg, transparent 60%, var(--hanwha-orange-light) 60%);
 }
 
 .hl-green {
     font-weight: 700;
-    color: var(--accent);
+    color: var(--hanwha-orange);
 }
 
 /* 목차 섹션 */
@@ -87,7 +101,31 @@
 
 .toc-item:hover {
     padding-left: 16px;
-    background: rgba(0, 0, 0, 0.02);
+    background: var(--hanwha-orange-light);
+}
+
+.toc-item.featured {
+    border-left: 3px solid var(--hanwha-orange);
+    padding-left: 16px;
+    background: var(--hanwha-orange-light);
+}
+
+.toc-item.featured:hover {
+    background: var(--hanwha-orange-medium);
+}
+
+.featured-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 12px;
+    padding: 3px 10px;
+    background: var(--hanwha-orange);
+    border-radius: var(--radius-sm);
+    vertical-align: middle;
 }
 
 .toc-number {
@@ -372,20 +410,32 @@ body {
 
 .hero-tagline {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--hanwha-orange);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 20px;
     display: inline-block;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 20px;
+    background: rgba(243, 115, 33, 0.15);
+    border-radius: var(--radius-sm);
 }
 
 .hero-sub {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.05em;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.02em;
     font-weight: 400;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-career {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    margin-top: 24px;
 }
 
 .scroll-indicator {
@@ -433,7 +483,8 @@ section {
 
 .section-label {
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: var(--hanwha-orange);
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: 24px;
@@ -447,50 +498,87 @@ section {
 }
 
 /* =============================================
-   About 섹션
+   How I Work 섹션
    ============================================= */
-.about {
+.how-i-work {
     background: var(--bg);
     border-top: 1px solid var(--border);
 }
 
-.about-content {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 80px;
-    margin-bottom: 80px;
-}
-
-.about-intro h2 {
+.how-i-work .section-title {
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     letter-spacing: -0.02em;
 }
 
-.about-intro .highlight {
-    color: var(--text);
+.how-i-work .section-title .highlight {
+    color: var(--hanwha-orange);
     font-weight: 700;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 3px solid var(--hanwha-orange);
     padding-bottom: 2px;
 }
 
-.about-description {
+.process-intro {
+    max-width: 700px;
+    margin-bottom: 60px;
+}
+
+.process-intro p {
     font-size: 1.05rem;
     color: var(--text-sub);
     line-height: 1.9;
 }
 
-.about-description strong {
-    color: var(--kakao-black);
+/* 프로세스 그리드 */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
 }
 
-.about-stats {
+.process-item {
     display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding-top: 20px;
+    gap: 24px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.process-item:hover {
+    border-color: var(--text);
+}
+
+.process-number {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+}
+
+.process-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.process-content p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+}
+
+/* 핵심 지표 */
+.work-stats {
+    display: flex;
+    gap: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
 }
 
 .stat-item {
@@ -502,7 +590,7 @@ section {
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--kakao-black);
+    color: var(--text);
     letter-spacing: -0.02em;
 }
 
@@ -512,47 +600,15 @@ section {
     letter-spacing: 0.05em;
 }
 
-/* 역량 */
-.capabilities {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.capability-item {
-    display: flex;
-    gap: 24px;
-    padding: 32px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 0;
-    transition: var(--transition);
-}
-
-.capability-item:hover {
-    border-color: var(--text);
-}
-
-.capability-number {
-    font-size: 0.75rem;
-    color: var(--text);
-    font-weight: 600;
-    background: transparent;
-    padding: 0;
-    letter-spacing: 0.1em;
-}
-
-.capability-content h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--kakao-black);
-}
-
-.capability-content p {
-    font-size: 0.9rem;
-    color: var(--text-sub);
-    line-height: 1.6;
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-stats {
+        flex-direction: column;
+        gap: 24px;
+    }
 }
 
 /* =============================================
@@ -566,12 +622,29 @@ section {
 .projects-list {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 0;
 }
 
 .project-item {
-    padding-bottom: 80px;
-    border-bottom: 1px solid var(--border);
+    padding: 80px 32px;
+    margin: 0 -32px;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* 홀수 프로젝트 (1, 3, 5, 7) - 밝은 배경 */
+.project-item:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* 짝수 프로젝트 (2, 4, 6, 8) - 기본 배경 */
+.project-item:nth-child(even) {
+    background: transparent;
+}
+
+.project-item:last-child {
+    margin-bottom: 0;
 }
 
 .project-header {
@@ -582,11 +655,12 @@ section {
 }
 
 .project-index {
-    font-size: 0.85rem;
-    color: var(--text);
+    font-size: 1rem;
+    color: var(--hanwha-orange);
     font-weight: 700;
-    background: transparent;
-    padding: 0;
+    background: var(--hanwha-orange-light);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
     letter-spacing: 0.05em;
 }
 
@@ -636,6 +710,11 @@ section {
     max-width: 800px;
 }
 
+.project-summary strong {
+    color: var(--hanwha-orange);
+    font-weight: 700;
+}
+
 /* 프로젝트 강점/칩 */
 .project-strengths {
     margin: 18px 0 34px;
@@ -652,13 +731,20 @@ section {
     display: inline-flex;
     align-items: center;
     padding: 8px 16px;
-    border-radius: 0;
-    border: 1px solid var(--border-strong);
-    background: transparent;
-    color: var(--text);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-accent);
+    background: var(--hanwha-orange-light);
+    color: var(--hanwha-orange);
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.02em;
+    transition: var(--transition);
+}
+
+.chip:hover {
+    background: var(--hanwha-orange);
+    color: white;
+    border-color: var(--hanwha-orange);
 }
 
 .strengths-note {
@@ -744,11 +830,15 @@ section {
 }
 
 .detail-label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
     margin-bottom: 16px;
+    color: var(--hanwha-orange);
+    background: var(--hanwha-orange-light);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
 }
 
 .detail-card.problem .detail-label {
@@ -794,9 +884,9 @@ section {
 .insight-quote {
     margin: 0 0 16px 0;
     padding: 20px 24px;
-    border-radius: 0;
-    background: var(--bg-subtle);
-    border-left: 3px solid var(--text);
+    border-radius: var(--radius-md);
+    background: var(--hanwha-orange-light);
+    border-left: 4px solid var(--hanwha-orange);
     color: var(--text);
     font-size: 0.95rem;
     font-weight: 600;
@@ -904,12 +994,1561 @@ section {
     color: var(--insight-color);
 }
 
+/* 새로운 프로젝트 구조 스타일 */
+.section-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: -40px;
+    margin-bottom: 60px;
+}
+
+.toc-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* Context 서브 텍스트 */
+.context-sub {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Metrics 새 구조 */
+.detail-card.metrics .detail-label {
+    color: var(--accent);
+}
+
+.metrics-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.metric-before-after {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--accent);
+}
+
+.metric-before-after .metric-label {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 500;
+}
+
+.metric-before-after .metric-change {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.metric-before-after .metric-change strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* 프로젝트 템플릿 (사용자 작성용) */
+.project-template {
+    border: 2px dashed var(--border);
+    background: var(--bg-subtle);
+}
+
+.project-template .project-name {
+    color: var(--text-muted);
+}
+
+.template-notice {
+    padding: 24px;
+    background: rgba(0, 102, 255, 0.05);
+    border: 1px solid rgba(0, 102, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+.template-notice p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin: 0;
+}
+
+/* 프로세스 플로우 시각화 */
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 32px 24px;
+    background: var(--bg-subtle);
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: var(--hanwha-orange-light);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--hanwha-orange);
+    transition: var(--transition);
+}
+
+.flow-step:hover {
+    background: var(--hanwha-orange);
+    color: white;
+}
+
+.flow-arrow {
+    color: var(--hanwha-orange);
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .process-flow {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+}
+
 /* =============================================
    Skills 섹션
    ============================================= */
 .skills {
     background: var(--bg);
     border-top: 1px solid var(--border);
+}
+
+/* =============================================
+   What I Can Do at Hanwha Insurance 섹션
+   ============================================= */
+.hanwha-section {
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+    padding: 120px 0;
+}
+
+.hanwha-section .section-title {
+    margin-bottom: 48px;
+}
+
+.hanwha-content {
+    max-width: 800px;
+}
+
+.hanwha-content > p {
+    font-size: 1.1rem;
+    color: var(--text-sub);
+    line-height: 1.9;
+    margin-bottom: 32px;
+}
+
+.hanwha-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.hanwha-points li {
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.hanwha-points li:hover {
+    border-color: var(--text);
+}
+
+.hanwha-points li strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.hanwha-closing {
+    font-size: 1rem;
+    color: var(--text);
+    font-weight: 500;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.hanwha-closing strong {
+    color: var(--accent);
+}
+
+/* =============================================
+   대시보드 갤러리
+   ============================================= */
+.dashboard-gallery {
+    margin: 32px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: block;
+}
+
+.gallery-item:hover {
+    border-color: var(--text);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.gallery-note {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* =============================================
+   SNS 채널 갤러리
+   ============================================= */
+.sns-channels-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.channel-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.channel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.channel-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.instagram-link:hover {
+    color: #E1306C;
+}
+
+.external-icon {
+    font-size: 0.75rem;
+}
+
+.channel-content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.content-item {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+}
+
+.content-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.content-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .sns-channels-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .channel-content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =============================================
+   브랜드별 전략 섹션
+   ============================================= */
+.common-context {
+    margin-bottom: 40px;
+}
+
+.common-context .detail-card {
+    max-width: 100%;
+}
+
+.brand-strategy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.brand-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.brand-card.duvetica {
+    border-left: 4px solid #c9a962;
+}
+
+.brand-card.sergio {
+    border-left: 4px solid #4a90d9;
+}
+
+.brand-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.brand-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.brand-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.brand-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+.brand-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.brand-images .content-item {
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.brand-images .content-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.brand-images .content-item:hover img {
+    transform: scale(1.05);
+}
+
+.brand-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brand-detail-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand-detail-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detail-label-sm {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.brand-detail-item p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.brand-detail-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.brand-detail-item ul li {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.brand-detail-item ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.brand-metrics {
+    display: flex;
+    gap: 24px;
+}
+
+.brand-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand-metric .metric-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hanwha-orange);
+}
+
+.brand-metric .metric-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* 공통 방법론 */
+.common-methodology {
+    margin-bottom: 40px;
+}
+
+.methodology-flow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+
+.methodology-desc {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: var(--bg-subtle);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--hanwha-orange);
+}
+
+.method-step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.method-step.highlight {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--text-sub);
+}
+
+.step-num {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.step-text {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.4;
+}
+
+.method-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .brand-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .brand-images {
+        max-width: 300px;
+    }
+    
+    .brand-metrics {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    .methodology-flow {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .method-arrow {
+        transform: rotate(90deg);
+        align-self: center;
+    }
+}
+
+/* =============================================
+   대시보드 기능별 섹션
+   ============================================= */
+.dashboard-feature-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.feature-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.feature-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.feature-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.feature-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.feature-tag {
+    font-size: 0.75rem;
+    color: var(--accent);
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.feature-content {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+.feature-image {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.feature-image:hover img {
+    transform: scale(1.02);
+}
+
+.feature-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-detail-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.feature-detail-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.feature-detail-item p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.feature-detail-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-detail-item ul li {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.feature-detail-item ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.feature-metrics {
+    display: flex;
+    gap: 24px;
+}
+
+.feature-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.feature-metric .metric-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.feature-metric .metric-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* 대시보드 요약 */
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.tech-stack-card,
+.overall-metrics-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tech-item {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.overall-metrics {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+}
+
+.overall-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.overall-metric .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.overall-metric .metric-desc {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+/* 프로젝트 인사이트 박스 */
+.project-insight-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.project-insight-box p {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin: 12px 0 0 0;
+}
+
+@media (max-width: 768px) {
+    .feature-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-image {
+        max-width: 100%;
+    }
+    
+    .dashboard-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .overall-metrics {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+/* =============================================
+   Phase 타임라인 (프로젝트 03)
+   ============================================= */
+.phase-timeline {
+    margin-bottom: 32px;
+}
+
+.timeline-header {
+    margin-bottom: 20px;
+}
+
+.phase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.phase-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+.phase-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+}
+
+.phase-card:nth-child(1)::before { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+.phase-card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a855f7); }
+.phase-card:nth-child(3)::before { background: linear-gradient(90deg, #a855f7, #d946ef); }
+.phase-card:nth-child(4)::before { background: linear-gradient(90deg, #d946ef, #ec4899); }
+
+.phase-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.phase-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.phase-header h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.phase-content {
+    padding: 16px;
+}
+
+.phase-purpose,
+.phase-execution {
+    margin-bottom: 12px;
+}
+
+.phase-execution:last-child {
+    margin-bottom: 0;
+}
+
+.mini-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.phase-purpose p {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.phase-execution ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.phase-execution ul li {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.phase-execution ul li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+/* 분석 자료 쇼케이스 */
+.analysis-showcase {
+    margin-bottom: 32px;
+}
+
+.showcase-header {
+    margin-bottom: 16px;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* 2열, 3열 그리드 옵션 */
+.showcase-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.showcase-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.showcase-item {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    background: #f5f5f5;
+    /* 16:9 비율 (1920x1080) 컨테이너 */
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showcase-item:hover {
+    border-color: var(--text-sub);
+    transform: translateY(-2px);
+}
+
+.showcase-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* 성과 & 인사이트 섹션 */
+.outcome-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.outcome-metrics,
+.outcome-insight {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.outcome-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.outcome-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.outcome-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.outcome-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    min-width: 80px;
+}
+
+.outcome-label {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+.outcome-insight p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin: 12px 0 0 0;
+}
+
+@media (max-width: 1024px) {
+    .phase-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .phase-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .showcase-grid-2,
+    .showcase-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .outcome-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* How I Work */
+.how-i-work {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border);
+}
+
+.how-title {
+    margin-bottom: 40px;
+}
+
+.how-title h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.work-philosophy {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.philosophy-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.philosophy-item:hover {
+    border-color: var(--hanwha-orange);
+    box-shadow: var(--shadow-accent);
+}
+
+.philosophy-icon {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    background: var(--hanwha-orange);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    height: fit-content;
+}
+
+.philosophy-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.philosophy-content p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.philosophy-content strong {
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .work-philosophy {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Career Timeline */
+.career-timeline {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border);
+}
+
+.timeline-title {
+    margin-bottom: 40px;
+}
+
+.timeline-title h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.timeline-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.timeline-item {
+    padding: 32px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+}
+
+.timeline-item.current {
+    border-left: 3px solid var(--accent);
+}
+
+.timeline-item.current::before {
+    content: 'CURRENT';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.timeline-period {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.timeline-role {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+}
+
+.timeline-brands {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.brand-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    background: var(--hanwha-orange-light);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    color: var(--hanwha-orange);
+}
+
+.timeline-achievements,
+.timeline-projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-achievements li,
+.timeline-projects li {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.timeline-achievements li::before,
+.timeline-projects li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.timeline-projects li strong {
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .timeline-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Skills Bars */
+.skills-bars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.skill-bar-item {
+    padding: 20px 24px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.skill-bar-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.skill-bar-level {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skill-bar-track {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.8s ease;
+}
+
+.skill-bar-desc {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .skills-bars {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SEO Proof */
+.seo-proof {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.seo-proof-header {
+    margin-bottom: 24px;
+}
+
+.seo-proof-header h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.seo-proof-desc {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin: 0;
+}
+
+/* SEO Analysis Dashboard */
+.seo-analysis-dashboard {
+    margin: 32px 0;
+    text-align: center;
+}
+
+.seo-analysis-dashboard img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-caption {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.seo-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.seo-proof-item {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.seo-proof-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.seo-brand-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.seo-execution-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0 0;
+    display: grid;
+    gap: 12px;
+}
+
+.seo-execution-list li {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.seo-execution-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.seo-execution-list li strong {
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .seo-proof-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contribution Section */
+.contribution {
+    padding: 120px 0;
+    background: var(--bg-subtle);
+}
+
+.contribution-subtitle {
+    font-size: 1rem;
+    color: var(--text-sub);
+    margin-top: 8px;
+    margin-bottom: 48px;
+}
+
+.contribution-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.contribution-card {
+    padding: 32px 24px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.contribution-card:hover {
+    border-color: var(--hanwha-orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-accent);
+}
+
+.contribution-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    color: var(--hanwha-orange);
+}
+
+.contribution-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--hanwha-orange);
+}
+
+.contribution-card > p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.contribution-card strong {
+    color: var(--hanwha-orange);
+}
+
+.contribution-proof {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.contribution-proof li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.contribution-proof li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+}
+
+.contribution-message {
+    text-align: center;
+    padding: 40px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.contribution-message p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.contribution-message .message-sub {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-top: 12px;
+    line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+    .contribution-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contribution-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Skills Detail Grid */
+.skills-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
 }
 
 .skills-grid {
@@ -1028,11 +2667,12 @@ section {
 }
 
 .contact-description em {
-    color: var(--kakao-black);
-    background: linear-gradient(transparent 60%, rgba(254, 229, 0, 0.55) 60%);
+    color: var(--hanwha-orange);
+    background: linear-gradient(transparent 60%, var(--hanwha-orange-light) 60%);
     padding: 0 6px;
-    border-radius: 10px;
+    border-radius: 4px;
     font-style: normal;
+    font-weight: 600;
 }
 
 .contact-links {
@@ -1049,12 +2689,14 @@ section {
     padding: 28px;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: var(--radius-md);
     transition: var(--transition);
 }
 
 .contact-link:hover {
-    border-color: var(--text);
+    border-color: var(--hanwha-orange);
+    background: var(--hanwha-orange-light);
+    box-shadow: var(--shadow-accent);
 }
 
 .link-label {
@@ -1124,7 +2766,8 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .skills-grid {
+    .skills-grid,
+    .skills-detail-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -1215,7 +2858,8 @@ section {
         min-width: auto;
     }
 
-    .skills-grid {
+    .skills-grid,
+    .skills-detail-grid {
         grid-template-columns: 1fr;
         gap: 32px;
     }
