@@ -1967,12 +1967,21 @@ section {
     overflow: hidden;
     transition: var(--transition);
     background: #f5f5f5;
-    /* 4:5 비율 (인스타그램 피드) 컨테이너 */
-    aspect-ratio: 4 / 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: center;
+    /* 4:5 비율 - padding-top 폴백 (aspect-ratio 미지원 브라우저용) */
+    padding-top: 125%; /* 5/4 = 1.25 = 125% */
+    height: 0;
+}
+
+/* aspect-ratio 지원 브라우저용 */
+@supports (aspect-ratio: 4 / 5) {
+    .showcase-item {
+        aspect-ratio: 4 / 5;
+        padding-top: 0;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .showcase-item:hover {
@@ -1981,12 +1990,25 @@ section {
 }
 
 .showcase-item img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
+    /* padding-top 방식용 절대 위치 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: block;
+}
+
+/* aspect-ratio 지원 브라우저용 이미지 스타일 */
+@supports (aspect-ratio: 4 / 5) {
+    .showcase-item img {
+        position: static;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+    }
 }
 
 /* 성과 & 인사이트 섹션 */
