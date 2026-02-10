@@ -3633,4 +3633,16 @@ section {
     .strategy-result {
         font-size: 0.8rem;
     }
+    .strategy-flow-4 .strategy-flow-step strong {
+        font-size: 0.75rem;
+    }
+}
+
+/* 4단계 플로우 - 약간 더 컴팩트하게 */
+.strategy-flow-4 .strategy-flow-step {
+    padding: 0 4px;
+}
+
+.strategy-flow-4 .strategy-flow-step strong {
+    font-size: 0.8rem;
 }
