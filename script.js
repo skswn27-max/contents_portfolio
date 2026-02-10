@@ -1,5 +1,5 @@
 // =============================================
-// Brand Maker 포트폴리오 - JavaScript
+// Consumer Strategist 포트폴리오 - JavaScript
 // =============================================
 
 // 모바일 메뉴 토글
@@ -31,6 +31,161 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// =============================================
+// 타이핑 효과
+// =============================================
+const typingPhrases = [
+    '트렌드를 센싱합니다',
+    '소비자의 목소리를 듣습니다',
+    '"왜?"를 끝까지 파고듭니다',
+    '인사이트를 전략으로 연결합니다',
+    '비즈니스 기회를 발견합니다'
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 80;
+
+function typeEffect() {
+    const target = document.getElementById('typing-target');
+    if (!target) return;
+
+    const currentPhrase = typingPhrases[phraseIndex];
+
+    if (isDeleting) {
+        target.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 40;
+    } else {
+        target.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 80;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        typingSpeed = 2000; // 완성 후 대기
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        typingSpeed = 500; // 다음 문장 전 대기
+    }
+
+    setTimeout(typeEffect, typingSpeed);
+}
+
+// =============================================
+// 스크롤 애니메이션 (Intersection Observer)
+// =============================================
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            
+            // 스킬바 애니메이션 처리
+            const skillBars = entry.target.querySelectorAll('.skill-bar-fill[data-width]');
+            skillBars.forEach(bar => {
+                bar.style.width = bar.dataset.width + '%';
+                bar.classList.add('animated');
+            });
+            
+            scrollObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// 기존 fade-in 옵저버도 유지
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// =============================================
+// 숫자 카운팅 애니메이션
+// =============================================
+function animateCounter(element) {
+    const target = parseInt(element.dataset.count);
+    if (isNaN(target)) return;
+    
+    const duration = 1500;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // easeOutExpo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = Math.floor(start + (target - start) * eased);
+        
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target;
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// =============================================
+// 초기화
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 타이핑 효과 시작
+    setTimeout(typeEffect, 1000);
+    
+    // data-animate 요소 관찰
+    document.querySelectorAll('[data-animate]').forEach(el => {
+        scrollObserver.observe(el);
+    });
+    
+    // 기존 fade-in 적용 (프로젝트 등)
+    document.querySelectorAll('.project-item, .capability-item, .skill-block, .stat-item, .contact-link').forEach(el => {
+        el.classList.add('fade-in');
+        fadeObserver.observe(el);
+    });
+    
+    // 숫자 카운팅 관찰
+    document.querySelectorAll('[data-count]').forEach(el => {
+        counterObserver.observe(el);
+    });
+    
+    // 스킬카드 전체 컨테이너 관찰 (스킬바 애니메이션)
+    document.querySelectorAll('.skill-cards').forEach(el => {
+        scrollObserver.observe(el);
+    });
+    
+    // 인스타그램 임베드
+    const instagramScript = document.querySelector('script[data-instgrm-embed]');
+    if (instagramScript) {
+        instagramScript.addEventListener('load', ensureInstagramEmbeds, { once: true });
+    }
+    ensureInstagramEmbeds();
+});
+
 // 인스타그램 임베드 렌더링 보장
 const processInstagramEmbeds = () => {
     if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === 'function') {
@@ -41,10 +196,8 @@ const processInstagramEmbeds = () => {
 };
 
 const ensureInstagramEmbeds = () => {
-    // 즉시 시도
     if (processInstagramEmbeds()) return;
     
-    // 반복 시도 (더 자주, 더 오래)
     let attempts = 0;
     const maxAttempts = 30;
     const intervalId = setInterval(() => {
@@ -54,41 +207,12 @@ const ensureInstagramEmbeds = () => {
         }
     }, 300);
     
-    // 페이지 로드 완료 후 추가 시도
     window.addEventListener('load', () => {
         setTimeout(processInstagramEmbeds, 500);
         setTimeout(processInstagramEmbeds, 1500);
         setTimeout(processInstagramEmbeds, 3000);
     });
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-    const instagramScript = document.querySelector('script[data-instgrm-embed]');
-    if (instagramScript) {
-        instagramScript.addEventListener('load', ensureInstagramEmbeds, { once: true });
-    }
-    ensureInstagramEmbeds();
-});
-
-// 스크롤 애니메이션 (Intersection Observer)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// 애니메이션 적용할 요소들
-document.querySelectorAll('.project-item, .capability-item, .skill-block, .stat-item, .contact-link').forEach(el => {
-    el.classList.add('fade-in');
-    observer.observe(el);
-});
 
 // CSS에 fade-in 애니메이션 추가
 const style = document.createElement('style');
@@ -123,7 +247,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 히어로 타이틀 글자 애니메이션 효과 (선택사항)
+// 히어로 타이틀 글자 애니메이션 효과
 const heroTitle = document.querySelector('.hero-title');
 if (heroTitle) {
     heroTitle.style.opacity = '0';
@@ -135,15 +259,3 @@ if (heroTitle) {
         heroTitle.style.transform = 'translateY(0)';
     }, 300);
 }
-
-// 태그라인 애니메이션
-const heroTagline = document.querySelector('.hero-tagline');
-if (heroTagline) {
-    heroTagline.style.opacity = '0';
-    
-    setTimeout(() => {
-        heroTagline.style.transition = 'opacity 1s ease';
-        heroTagline.style.opacity = '1';
-    }, 800);
-}
-
