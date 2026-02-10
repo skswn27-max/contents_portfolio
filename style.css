@@ -3434,3 +3434,203 @@ section {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* =============================================
+   My Strategy 섹션
+   ============================================= */
+.my-strategy {
+    padding: 120px 0;
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+}
+
+.strategy-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    margin-bottom: 48px;
+}
+
+.strategy-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.strategy-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.strategy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--zigzag-pink), var(--zigzag-purple));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.strategy-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-accent);
+    transform: translateY(-2px);
+}
+
+.strategy-card:hover::before {
+    opacity: 1;
+}
+
+.strategy-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.strategy-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+}
+
+.strategy-icon {
+    font-size: 32px;
+    color: var(--accent);
+}
+
+.strategy-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+}
+
+.strategy-desc {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.strategy-flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 24px;
+    background: var(--bg-subtle);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    border: 1px solid var(--border);
+}
+
+.strategy-flow-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 0 8px;
+}
+
+.strategy-flow-step .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.strategy-flow-step strong {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.strategy-flow-step small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.strategy-flow-arrow {
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    flex-shrink: 0;
+}
+
+.strategy-flow-arrow .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--zigzag-pink-50);
+}
+
+.strategy-result {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--zigzag-pink-light), var(--zigzag-purple-light));
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.strategy-result .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .strategy-card {
+        padding: 28px 20px;
+    }
+    .strategy-card h3 {
+        font-size: 1.1rem;
+    }
+    .strategy-flow {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        padding: 20px 16px;
+    }
+    .strategy-flow-step {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 12px;
+        padding: 0;
+    }
+    .strategy-flow-step .material-symbols-outlined {
+        margin-bottom: 0;
+        font-size: 24px;
+    }
+    .strategy-flow-step strong {
+        font-size: 0.8rem;
+    }
+    .strategy-flow-arrow {
+        justify-content: center;
+        padding: 0;
+    }
+    .strategy-flow-arrow .material-symbols-outlined {
+        transform: rotate(90deg);
+    }
+    .strategy-result {
+        font-size: 0.8rem;
+    }
+}
